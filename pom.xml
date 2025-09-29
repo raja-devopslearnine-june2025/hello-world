@@ -3,35 +3,40 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 
   <modelVersion>4.0.0</modelVersion>
+
   <groupId>com.example</groupId>
-  <artifactId>maven-project</artifactId>
+  <artifactId>maven-demo</artifactId>
   <version>1.0-SNAPSHOT</version>
   <packaging>pom</packaging>
+  <name>Maven Demo Project</name>
 
   <modules>
     <module>server</module>
     <module>webapp</module>
   </modules>
 
+  <!-- Global properties -->
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>11</maven.compiler.source>
+    <maven.compiler.target>11</maven.compiler.target>
+  </properties>
+
+  <!-- Dependency management -->
   <dependencyManagement>
     <dependencies>
-      <!-- JUnit 4 for testing -->
       <dependency>
         <groupId>junit</groupId>
         <artifactId>junit</artifactId>
         <version>4.13.2</version>
         <scope>test</scope>
       </dependency>
-
-      <!-- Hamcrest for assertions -->
       <dependency>
         <groupId>org.hamcrest</groupId>
         <artifactId>hamcrest</artifactId>
         <version>2.2</version>
         <scope>test</scope>
       </dependency>
-
-      <!-- Mockito for mocking -->
       <dependency>
         <groupId>org.mockito</groupId>
         <artifactId>mockito-core</artifactId>
@@ -41,18 +46,15 @@
     </dependencies>
   </dependencyManagement>
 
+  <!-- Build Plugins -->
   <build>
     <pluginManagement>
       <plugins>
-        <!-- Compiler plugin -->
+        <!-- Compiler -->
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-compiler-plugin</artifactId>
           <version>3.11.0</version>
-          <configuration>
-            <source>11</source>
-            <target>11</target>
-          </configuration>
         </plugin>
 
         <!-- WAR plugin -->
@@ -62,7 +64,7 @@
           <version>3.4.0</version>
         </plugin>
 
-        <!-- Jetty plugin (modern version for Java 11/17) -->
+        <!-- Jetty plugin -->
         <plugin>
           <groupId>org.eclipse.jetty</groupId>
           <artifactId>jetty-maven-plugin</artifactId>
@@ -79,7 +81,7 @@
     </pluginManagement>
   </build>
 
-  <!-- Reporting plugins should be in this section -->
+  <!-- Reporting -->
   <reporting>
     <plugins>
       <plugin>
